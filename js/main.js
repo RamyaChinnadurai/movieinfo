@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', function onReady(){
      * Step 2: Invoke the API - http://www.omdbapi.com/?apikey=<api-key> and retrieve the post list
      *         After the response returned - update the details into the div ( with "movies" id ) 
      * */ 
-  });
+
+    console.log("hello");
 
 });
 
