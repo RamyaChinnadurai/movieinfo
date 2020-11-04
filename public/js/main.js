@@ -1,6 +1,4 @@
 
-
-
 document.addEventListener('DOMContentLoaded', function onReady(){
     
   var a = 5;
@@ -19,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function onReady(){
 });
 
 const fetchMovies = (title) => {
-  const API_BASE = "http://localhost:3000/movies";
+  const API_BASE = "http://localhost:4000/movies";
   return fetch(API_BASE+`&s=${title}`)
     .then((res)=>res.json())
     .then(({Search})=> {

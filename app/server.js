@@ -1,6 +1,15 @@
 const express = require('express');
 const app = express();
+const { getMovies } = require('./services/movies');
 
-app.listen(3000, function() {
-    console.log('listening on 3000')
+app.use(express.static("public"))
+
+app.get("/movies", async (req, res) => {
+    const moviesList = await getMovies()
+    console.log(moviesList)
+    res.send(moviesList)
+})
+
+app.listen(4000, function() {
+    console.log('listening on 4000')
 })
