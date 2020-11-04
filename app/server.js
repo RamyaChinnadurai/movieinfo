@@ -6,7 +6,6 @@ app.use(express.static("public"))
 
 app.get("/movies", async (req, res) => {
     const moviesList = await getMovies()
-    console.log(moviesList)
     res.send(moviesList)
 })
 

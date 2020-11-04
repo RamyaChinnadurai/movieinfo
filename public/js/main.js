@@ -10,21 +10,16 @@ document.addEventListener('DOMContentLoaded', function onReady(){
     const title = document.getElementById('search-text').value;
     
     fetchMovies(title);
-
-    console.log("Fetch end");
   });
 
 });
 
 const fetchMovies = (title) => {
-  const API_BASE = "http://localhost:4000/movies";
-  return fetch(API_BASE+`&s=${title}`)
+  const API_BASE = "/movies"
+  return fetch(API_BASE)
     .then((res)=>res.json())
-    .then(({Search})=> {
-      loadMovies(Search);
-      console.log("Fetch start");
-    })
-    .catch(err=>console.log(err));
+    .then((data)=> loadMovies(data))
+    .catch(err=>console.log(err))
 };
 
 function loadMovies(movies){
