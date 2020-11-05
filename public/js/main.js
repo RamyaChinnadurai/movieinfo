@@ -18,11 +18,11 @@ document.addEventListener('DOMContentLoaded', function onReady(){
 
 });
 
-const fetchMovies = (title) => {
-  const API_BASE = "http://localhost:3000/movies";
-  return fetch(API_BASE+`&s=${title}`)
+const fetchMovies = () => {
+  const API_BASE = "/movies";
+  return fetch(API_BASE)
     .then((res)=>res.json())
-    .then(({Search})=> {
+    .then(Search => {
       loadMovies(Search);
       console.log("Fetch start");
     })

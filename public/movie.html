@@ -18,20 +18,7 @@
 
     <div class="container">
       <div id="movie" class="well">
-        <div class="row">
-          <div class="image">
-              <img src="https://image.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-260nw-1037719192.jpg" class="thumbnail">
-          </div>
-          <h2 id="title"></h2>
-          <div class="details-wrapper">
-              <ul class="list-group">
-                <li id="genre"><strong>Genre:</strong></li>
-                <li id="release"><strong>Released:</strong></li>
-                <li id="director"><strong>Director:</strong></li>
-                <li id="actors"><strong>Actors:</strong></li>   
-              </ul>
-          </div>
-          </div>
+        
           <div class="footer">
           <div class="">
               <hr>
@@ -44,12 +31,41 @@
       (function(){
 
         // Step 1. Get the id from the session storage. Insert the code below
-
+        const mid=sessionStorage.getItem("movieId")
 
         // Step 2. Does a api call to fetch the additional details and update the page
+        const fetchData=async()=>{
+          fetch(`/movies/${mid}`)
+          .then(res=>{
+            res.json();
+          })
+          .then(data=>{
+            console.log(data);
+            
+           const template= `<div class="row">
+          <div class="image">
+              <img src="${data.Poster}" class="thumbnail">
+          </div>
+          <h2 id="title"></h2>
+          <div class="details-wrapper">
+              <ul class="list-group">
+                <li id="genre"><strong>Genre:</strong></li>
+                <li id="release"><strong>Released:</strong></li>
+                <li id="director"><strong>Director:</strong></li>
+                <li id="actors"><strong>Actors:</strong></li>   
+              </ul>
+          </div>
+          </div>`
 
-        
+          const html=document.getElementById("movie");
+          html.innerHTML=template;
+
+          })
+
+        }
+        fetchData();
       })();
+      
     </script>
   </body>
 </html>
