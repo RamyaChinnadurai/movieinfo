@@ -1,16 +1,15 @@
-const MongoClient = require('mongodb');
 
-const connectionString = "mongodb+srv://<user>:<pass>@lmsdev.fr6mr.mongodb.net/<dbname>?retryWrites=true&w=majority";
-const connectToDB = async () => MongoClient.connect(connectionString, { useUnifiedTopology: true });
+const getMovies = async (db, ) => db.collection('movies').find({}).toArray();
 
-const getMovies = async () => {
-    const client = await connectToDB();
-    const db = client.db('OMDB');
+const insertMovie = async (db, movieItem) => db.collection('movies').insertOne(movieItem);
 
-    const response = await db.collection('movies').find({});
-    return response.toArray();
-}
+const updateMovie = async (db, {movieID, params}) => db.collection('movies').updateOne({ imdbID: movieID },{ $set: params });
+
+const deleteMovie = async (db, movieID) => db.collection('movies').removeOne({ imdbID: movieID });
 
 module.exports = {
-    getMovies
+    getMovies,
+    insertMovie,
+    updateMovie,
+    deleteMovie
 }
