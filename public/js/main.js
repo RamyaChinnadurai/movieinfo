@@ -1,30 +1,24 @@
 
 
 
-document.addEventListener('DOMContentLoaded', function onReady(){
+document.addEventListener('DOMContentLoaded', async function onReady(){
     
-  var a = 5;
-  fetchMovies('Inside');
-  var b = 10;
-  document.getElementById('search-form').addEventListener('submit', function onSearchSubmit(e){
-    e.preventDefault();
-  
-    const title = document.getElementById('search-text').value;
-    
-    fetchMovies(title);
-
-    console.log("Fetch end");
+  var moviesList = await fetchMovies();
+  document.getElementById('search-text').addEventListener('change', function onSearchSubmit(e){
+    const searchKey = e.target.value;
+    let filterList = moviesList.filter(({Title})=>Title.includes(searchKey));
+    loadMovies(filterList);
   });
 
 });
 
-const fetchMovies = (title) => {
-  const API_BASE = "http://localhost:3000/movies?";
-  return fetch(API_BASE+`s=${title}`)
+const fetchMovies = () => {
+  const API_BASE = "/movies?";
+  return fetch(API_BASE)
     .then((res)=>res.json())
     .then((movieList)=> {
       loadMovies(movieList);
-      console.log("Fetch start");
+      return movieList;
     })
     .catch(err=>console.log(err));
 };
