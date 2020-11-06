@@ -4,17 +4,20 @@ import Logo from './components/Logo';
 import MovieList from './components/MovieList';
 import MyFavourites from './components/MyFavourites';
 
+let initialList = [];
+
 const App = () => {
     const [movieList, setMovieList] = useState([]);
     
     useEffect(async () => { 
         const response = await fetch('http://localhost:3000/movies');
         const movies = await response.json();
+        initialList = movies;
         setMovieList(movies);
     },[]);
 
     const setMoviesByFilter = (searchKey) => {
-        const newList = movieList.filter(({Title})=>Title.includes(searchKey));
+        const newList = initialList.filter(({Title})=>Title.includes(searchKey));
         setMovieList(newList);
     };
 
