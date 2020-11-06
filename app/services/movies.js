@@ -25,12 +25,12 @@ const storeMovies = async (data) => {
 }
 
 const updateMovies = async (id, data) => {
-        const client = await connectToDb()
-        const db = client.db("OMDB")
-        db.collection("movies").updateOne(
-            { "_id": ObjectId(id) },
-            { $set: data }
-        )
+    const client = await connectToDb()
+    const db = client.db("OMDB")
+    db.collection("movies").updateOne(
+        { "imdbID": id },
+        { $set: data }
+    )
 }
 
 const deleteMovies = async (id) => {
@@ -42,3 +42,7 @@ const deleteMovies = async (id) => {
 }
 
 module.exports = {getMovies, storeMovies, updateMovies, deleteMovies}
+
+
+
+
