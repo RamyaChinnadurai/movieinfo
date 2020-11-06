@@ -2,10 +2,10 @@ import React from "react";
 import Logo from "./Logo";
 import Search from "./Search";
 
-const Header = () => (
+const Header = ({onSearch}) => (
   <div className="header">
       <Logo />
-      <Search />
+      <Search onSearch={onSearch}/>
   </div>
 );
 

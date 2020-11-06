@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState} from "react";
 
-const Search = () => {
+const Search = ({onSearch}) => {
+  const [ searchText, setSearchText] = useState('')
   return (
     <div class="jumbotron">
         <form id="search-form">
@@ -9,6 +10,14 @@ const Search = () => {
                 className="form-control"
                 id="search-text"
                 placeholder="Search For Movies "
+                value={searchText}
+                onChange={
+                  (e) =>{
+                    const searchKey = e.target.value;
+                    setSearchText(searchKey);
+                    onSearch(searchKey);
+                  }
+                }
             />
         </form>
     </div>
