@@ -21,9 +21,7 @@ module.exports = {
     },
     mode: 'development',
     plugins: [
-        "@babel/plugin-proposal-class-properties",
-        "@babel/plugin-syntax-jsx",
-        new HtmlWebpackPlugin({
+       new HtmlWebpackPlugin({
             template: 'public/index.html'
         })
     ]

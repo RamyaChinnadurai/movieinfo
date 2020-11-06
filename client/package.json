@@ -4,7 +4,7 @@
   "description": "Movies list app using react application",
   "main": "index.js",
   "scripts": {
-    "start": "npm start react",
+    "start": "webpack serve",
     "test": "npm test",
     "create": "webpack"
   },
