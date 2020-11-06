@@ -21,7 +21,7 @@ const storeMovies = async (data, res) => {
     const client = await connectToDb();
     const db = client.db("omdb");
     const response = await db.collection("movies").insertOne(data);
-    res.redirect("/movies");
+    res.json({ Message: "Successfully uploaded" });
   } catch (error) {
     console.log("Error" + error);
     return res.status(404).json({ Error: "File not found" });
@@ -46,7 +46,7 @@ const updateMovieWithId = async (id, data, res) => {
     const response = await db
       .collection("movies")
       .updateOne({ imdbID: id }, { $set: data });
-    res.redirect(`/movie/${id}`);
+    res.json({ Message: "Successfully updates" });
   } catch (error) {
     console.log("Error" + error);
     return res.status(404).json({ Error: "File not found" });
@@ -58,7 +58,7 @@ const deleteMovieWithId = async (id, res) => {
     const client = await connectToDb();
     const db = client.db("omdb");
     const response = await db.collection("movies").deleteOne({ imdbID: id });
-    res.redirect("/movies");
+    res.json({ Message: "Successfully deleted" });
   } catch (error) {
     console.log("Error" + error);
     return res.status(404).json({ Error: "File not found" });

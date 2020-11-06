@@ -24,8 +24,7 @@ app.get("/movie/:id", (req, res) => {
   const { id } = req.params;
   getMovieWithId(id, res);
 });
-
-app.put("/movie/:id", (req, res) => {
+app.patch("/movie/:id", (req, res) => {
   const { id } = req.params;
   const { body } = req;
   updateMovieWithId(id, body, res);
