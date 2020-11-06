@@ -47,6 +47,21 @@ function toggleFavourite(id){
   const className = newValue === "false" ? "favourite-off" : "favourite-on";
   document.querySelector(`#${id} svg`).setAttribute('data-favourite', newValue);
   document.querySelector(`#${id} svg`).setAttribute('class', className);
+
+  fetch(`/movies/${id}`,{
+    method: 'PATCH',
+    body: JSON.stringify({
+      Favourite: newValue === "false" ? false : true
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then((res)=>res.json())
+    .then(()=> {
+      console.log("Sync to DB")
+    })
+    .catch(err=>console.log(err));
 }
 
 function movieSelected(id){

@@ -28,13 +28,14 @@ app.post('/movies', async (req, res) => {
 app.patch('/movies/:id', async (req, res) => {
     const payload = {
         movieID: req.params.id,
-        param: req.body
+        params: req.body
     };
 
     try{
         await moviesDB.updateMovie(req.database, payload)
         res.send({ status: true });
     }catch(err){
+        console.log(payload, err)
         res.send({ status: false });
     }
     
