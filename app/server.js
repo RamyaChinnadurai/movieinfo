@@ -3,10 +3,11 @@ const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const moviesDB = require('./services/movies');
 const connectToMongo = require('./config/db');
+const cors = require('cors');
 
 const app = express();
 dotenv.config();
-
+app.use(cors());
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(connectToMongo(app));
