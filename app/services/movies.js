@@ -35,7 +35,7 @@ const updateMovies = async (id, data) => {
     const client = await connectToDb()
     const db = client.db("OMDB")
     db.collection("movies").updateOne(
-        { "_id": ObjectId(id) },
+        { "imdbID": id },
         { $set: data }
     )
     // console.log(data1)
