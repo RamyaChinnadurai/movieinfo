@@ -1,6 +1,9 @@
 import React  from 'react';
+import FavouriteIcon from './FavouriteIcon';
 
- const MovieCard = () => {
+ const MovieCard = (props) => {
+     console.log('props: ', props);
+     const { Title, Poster} = props.movies
 
     const handleClick = () => {
         console.log("movie details clicked")
@@ -8,9 +11,9 @@ import React  from 'react';
 
     return (
         <div>
-            <img class="object-fit-cover" src="https://m.media-amazon.com/images/M/MV5BMjE5NDQ5OTE4Ml5BMl5BanBnXkFtZTcwOTE3NDIzMw@@._V1_SX300.jpg" />
-            <h2 class="movie-title" >Inside out</h2>
-            <a class="view-details" onclick={handleClick} target="_blank" >Movie Details</a>
+            <img className="object-fit-cover" src={Poster} />
+            <h2 className="movie-title" >{Title}<FavouriteIcon /></h2>
+            <a className="view-details" onClick={handleClick} target="_blank" >Movie Details</a>
         </div>
    )
 }

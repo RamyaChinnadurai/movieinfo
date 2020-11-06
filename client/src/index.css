@@ -19,6 +19,8 @@ body{
   grid-gap: 60px 120px;
 }
 
+
+
 .object-fit-cover {
   height: 320px;
   width: 240px;
@@ -65,6 +67,18 @@ body{
   font-size: 24px;
   margin: 0;
   padding: 2px;
+}
+
+.favourite-on {
+  float: right;
+  fill: rgb(220, 20, 60);
+  cursor: pointer;
+}
+
+.favourite-off {
+  float: right;
+  fill: none;
+  cursor: pointer;
 }
 
 #movie .image{
