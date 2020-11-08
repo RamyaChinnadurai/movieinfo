@@ -19,6 +19,16 @@ body{
   grid-gap: 60px 120px;
 }
 
+#favouritesCount{
+  display: flex !important;
+  font-size: 1.15em;
+}
+#favouritesCountnum{
+  margin-left: 10px;
+  margin-right: 2px;
+  font-size: 1em;
+}
+
 
 
 .object-fit-cover {
@@ -109,6 +119,9 @@ body{
   justify-content: center;
 }
 
+.favdiv{
+  margin-right: 5%;
+}
 
 
 
